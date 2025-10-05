@@ -1,0 +1,26 @@
+﻿@model List<ABC_Retail.Models.CustomerEntity>
+
+<h2>Customers</h2>
+
+<a asp-action="Create" class="btn btn-primary mb-3">Add Customer</a>
+<a asp-action="Seed" class="btn btn-secondary mb-3">Seed Customers</a>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Email</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var c in Model)
+        {
+            <tr>
+                <td>@c.FirstName</td>
+                <td>@c.LastName</td>
+                <td>@c.Email</td>
+            </tr>
+        }
+    </tbody>
+</table>

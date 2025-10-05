@@ -1,0 +1,22 @@
+﻿@model ABCRetail.Web.Models.OrderCreateVm
+
+<h2>Place Order</h2>
+
+<form asp-action="Create" method="post">
+    <div class="form-group">
+        <label>Customer</label>
+        <select asp-for="CustomerId" class="form-control" asp-items="Model.Customers"></select>
+    </div>
+
+    <div class="form-group">
+        <label>Product</label>
+        <select asp-for="ProductId" class="form-control" asp-items="Model.Products"></select>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Quantity"></label>
+        <input asp-for="Quantity" class="form-control" type="number" min="1" />
+    </div>
+
+    <button type="submit" class="btn btn-success mt-2">Submit Order</button>
+</form>

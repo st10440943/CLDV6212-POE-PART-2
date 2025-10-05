@@ -1,0 +1,65 @@
+﻿@{
+    ViewData["Title"] = "Welcome to ABC Retail";
+}
+
+<div class="text-center">
+    <h1 class="display-4 mb-4">⚽ Welcome to ABC Retail</h1>
+    <p class="lead">Your one-stop shop for Premier League soccer shirts!</p>
+</div>
+
+<div class="row mt-5">
+    <div class="col-md-4">
+        <div class="card shadow-sm">
+            <img src="https://upload.wikimedia.org/wikipedia/en/7/7a/Manchester_United_FC_crest.svg" class="card-img-top p-4" alt="Customers">
+            <div class="card-body text-center">
+                <h5 class="card-title">Manage Customers</h5>
+                <p class="card-text">View and add customer profiles.</p>
+                <a asp-controller="Customers" asp-action="Index" class="btn btn-primary">Go to Customers</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-4">
+        <div class="card shadow-sm">
+            <img src="https://upload.wikimedia.org/wikipedia/en/0/0c/Liverpool_FC.svg" class="card-img-top p-4" alt="Products">
+            <div class="card-body text-center">
+                <h5 class="card-title">Shop Products</h5>
+                <p class="card-text">Browse our collection of soccer shirts.</p>
+                <a asp-controller="Products" asp-action="Index" class="btn btn-success">Go to Products</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-4">
+        <div class="card shadow-sm">
+            <img src="https://upload.wikimedia.org/wikipedia/en/c/c1/Arsenal_FC.svg" class="card-img-top p-4" alt="Orders">
+            <div class="card-body text-center">
+                <h5 class="card-title">Place Orders</h5>
+                <p class="card-text">View and process customer orders.</p>
+                <a asp-controller="Orders" asp-action="Index" class="btn btn-danger">Go to Orders</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row mt-5">
+    <div class="col-md-6">
+        <div class="card shadow-sm">
+            <div class="card-body text-center">
+                <h5 class="card-title">📄 Manage Contracts</h5>
+                <p class="card-text">Upload and download dummy contracts.</p>
+                <a asp-controller="Files" asp-action="Index" class="btn btn-secondary">Go to Files</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-6">
+        <div class="card shadow-sm">
+            <div class="card-body text-center">
+                <h5 class="card-title">📬 Queue Messages</h5>
+                <p class="card-text">Check order event messages in the queue.</p>
+                <a asp-controller="Queue" asp-action="Index" class="btn btn-warning">Go to Queue</a>
+            </div>
+        </div>
+    </div>
+</div>

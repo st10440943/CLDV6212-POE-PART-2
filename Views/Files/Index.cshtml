@@ -1,0 +1,23 @@
+﻿@model List<ABC_Retail.Models.FileItemVm>
+
+<h2>Dummy Contracts</h2>
+
+<a asp-action="Upload" class="btn btn-primary mb-3">Upload New Contract</a>
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>File Name</th>
+            <th>Link</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var f in Model)
+        {
+            <tr>
+                <td>@f.Name</td>
+                <td><a href="@f.Url" target="_blank">Download</a></td>
+            </tr>
+        }
+    </tbody>
+</table>

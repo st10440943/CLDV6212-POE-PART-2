@@ -1,0 +1,97 @@
+﻿@model IEnumerable<ABC_Retail.Models.ProductEntity>
+
+@{
+    ViewData["Title"] = "Our Soccer Shirts";
+}
+
+<h2 class="mb-4 text-center">@ViewData["Title"]</h2>
+
+<!-- Alert message -->
+@if (TempData["Message"] != null)
+{
+    <div class="alert alert-success text-center">
+        @TempData["Message"]
+    </div>
+}
+
+<!-- Search Bar -->
+<form asp-action="Index" method="get" class="mb-4 text-center">
+    <div class="input-group w-50 mx-auto">
+        <input type="text" name="search" value="@ViewData["CurrentFilter"]" class="form-control" placeholder="Search by name or size..." />
+        <button class="btn btn-outline-primary" type="submit">Search</button>
+    </div>
+</form>
+
+<!-- Sort Buttons -->
+<div class="text-center mb-4">
+    <a asp-action="Index" asp-route-sortOrder="@ViewData["NameSort"]" class="btn btn-outline-secondary btn-sm me-2">
+        Sort by Name
+    </a>
+    <a asp-action="Index" asp-route-sortOrder="@ViewData["PriceSort"]" class="btn btn-outline-secondary btn-sm">
+        Sort by Price
+    </a>
+</div>
+
+<!-- Seed Button -->
+<div class="text-center mb-5">
+    <a asp-action="Seed" class="btn btn-success">
+        🌱 Seed 6 Sample Products
+    </a>
+</div>
+
+<!-- Product Cards -->
+<div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-4">
+    @foreach (var item in Model)
+    {
+        <div class="col">
+            <div class="card h-100 shadow-sm border-0">
+                <img src="@item.ImageUrl" class="card-img-top" alt="@item.Name"
+                     style="height:250px; object-fit:cover; border-bottom:1px solid #eee;" />
+
+                <div class="card-body text-center">
+                    <h5 class="card-title text-truncate" title="@item.Name">@item.Name</h5>
+                    <p class="card-text mb-2">
+                        <strong>Price:</strong> R @item.Price.ToString("N2") <br />
+                        <strong>Size:</strong> @item.Size
+                    </p>
+
+                    <a asp-controller="Orders" asp-action="Create" asp-route-productId="@item.RowKey"
+                       class="btn btn-primary w-100 mb-2">
+                        🛒 Order Now
+                    </a>
+
+                    <!-- Optional Delete Button (for admin use) -->
+                    <form asp-action="Delete" asp-route-partitionKey="@item.PartitionKey" asp-route-rowKey="@item.RowKey" method="post" onsubmit="return confirm('Are you sure you want to delete this product?');">
+                        <button type="submit" class="btn btn-danger w-100 btn-sm">Delete</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    }
+</div>
+
+<style>
+    .card {
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+        }
+
+    h2 {
+        font-weight: 600;
+        color: #333;
+    }
+
+    .btn-success {
+        border-radius: 20px;
+        font-weight: 500;
+    }
+
+    .alert {
+        max-width: 600px;
+        margin: 0 auto;
+    }
+</style>

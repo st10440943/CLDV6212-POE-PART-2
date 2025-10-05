@@ -1,0 +1,26 @@
+﻿@model List<string>
+
+<h2>Order Queue</h2>
+
+@if (Model.Count == 0)
+{
+    <p>No messages found in the queue.</p>
+}
+else
+{
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Message</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var msg in Model)
+            {
+                <tr>
+                    <td>@msg</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
